@@ -31,21 +31,23 @@
     	
 	}
 	#team_fm{
-		height: 900px;
+		height: 1400px;
    	 	background-image:url("../images/stra6_fifa.jpg");
    	 	background-repeat:no-repeat;
    	 	background-size:cover;
+   	 	background-position: center center;
     	float: left;
    	 	width: 100%;
 	}
 	#squad_list{
 		width: 30%;
   	  	float: right;
-   	 	height: 1000px;
+   	 	height: 1500px;
     	background-color: #2B1640;
     	opacity:0.8;
     	border-left: 3px solid black;
     	box-sizing: border-box;
+    
 	}
 	#squad_list > a {
 		color:white;
@@ -72,7 +74,7 @@
 	.btnMaker>div{width:170px;}
 	.card_back{position:relative; z-index:1;}/*카드백그라운드*/
 	.card_back>img{width:100%;}
-	.btnMaker>div>p{position:absolute; top:64px; left:18px;z-index:2;}/* 선수 사진 */
+	.btnMaker>div>p{position:absolute; top:64px; left:20px;z-index:2;}/* 선수 사진 */
 	
 	
 	
@@ -80,25 +82,25 @@
 	.card_Btn{position:absolute; bottom:37px; left:40px; z-index:3;}
 	
 	/*사진 */
-	.positionNum1 {position:absolute;bottom:400px;left:200px;}
-	.positionNum2 {position:absolute;bottom:400px;left:500px;}
-	.positionNum3 {position:absolute;bottom:400px;left:800px;}
-	.positionNum4 {position:absolute;bottom:150px;left:200px;}
-	.positionNum5 {position:absolute;bottom:150px;left:500px;}
-	.positionNum6 {position:absolute;bottom:150px;left:800px;}
-	.positionNum7 {position:absolute;bottom:-100px;left:200px;}
-	.positionNum8 {position:absolute;bottom:-100px;left:400px;}
-	.positionNum9 {position:absolute;bottom:-100px;left:600px;}
-	.positionNum10 {position:absolute;bottom:-100px;left:800px;}
-	.positionNum11 {position:absolute;bottom:-200px;left:500px;}
+	.positionNum1 {position:absolute;bottom:550px;left:300px;}
+	.positionNum2 {position:absolute;bottom:550px;left:600px;}
+	.positionNum3 {position:absolute;bottom:550px;left:900px;}
+	.positionNum4 {position:absolute;bottom:250px;left:350px;}
+	.positionNum5 {position:absolute;bottom:250px;left:650px;}
+	.positionNum6 {position:absolute;bottom:250px;left:950px;}
+	.positionNum7 {position:absolute;bottom:-100px;left:250px;}
+	.positionNum8 {position:absolute;bottom:-100px;left:500px;}
+	.positionNum9 {position:absolute;bottom:-100px;left:750px;}
+	.positionNum10 {position:absolute;bottom:-100px;left:1000px;}
+	.positionNum11 {position:absolute;bottom:-300px;left:650px;}
 	
 	/* 사진전체 */
-	#positionNum1Maker {position:absolute;bottom:350px;left:200px;}
-	#positionNum2Maker {position:absolute;bottom:350px;left:500px;}
-	#positionNum3Maker {position:absolute;bottom:350px;left:800px;}
-	#positionNum4Maker {position:absolute;bottom:50px;left:200px;}
-	#positionNum5Maker {position:absolute;bottom:50px;left:500px;}
-	#positionNum6Maker {position:absolute;bottom:50px;left:800px;}
+	#positionNum1Maker {position:absolute;bottom:500px;left:300px;}
+	#positionNum2Maker {position:absolute;bottom:500px;left:580px;}
+	#positionNum3Maker {position:absolute;bottom:500px;left:900px;}
+	#positionNum4Maker {position:absolute;bottom:50px;left:300px;}
+	#positionNum5Maker {position:absolute;bottom:50px;left:580px;}
+	#positionNum6Maker {position:absolute;bottom:50px;left:900px;}
 	#positionNum7Maker {position:absolute;bottom:-100px;left:200px;}
 	#positionNum8Maker {position:absolute;bottom:-100px;left:400px;}
 	#positionNum9Maker {position:absolute;bottom:-100px;left:600px;}
@@ -106,7 +108,7 @@
 	#positionNum11Maker {position:absolute;bottom:-200px;left:500px;}
 	
 	/* 국기 */
-	.positionNum1flag {position:absolute;bottom:-200px;left:500px;} 
+	
 	
 	/* 선수정보 */
 	#pler_view > table {
@@ -146,7 +148,7 @@
 			<div id="notice_content">
 				<div id="team_fm">
 					<div id="forma_top">
-						포메이션 &nbsp;&nbsp;&nbsp;&nbsp;구단가치 팀인원 
+						포메이션 &nbsp;&nbsp;&nbsp;&nbsp;구단가치 총급여  
 					</div>
 				<div class="buttonSelector">			
 					<form action="#" >
@@ -159,7 +161,7 @@
 										<img src="../images/21TOTN.png">												
 									</div>
 									<p><input type="image" alt="왜없내" src="../player/upload/${name.plerImage.split(',')[0] }" class="${name.positionNum }img" ></p>
-									<p class="flag" style="z-index: 2;"><input type="image" alt="국기" src="../player/upload/${name.plerImage.split(',')[1] }" class="${name.positionNum }flag"  style="width:45px;height: 42px;position:absolute; top: 90px;left: -10px;"></p>
+									<p class="flag" style="z-index: 2;"><input type="image" alt="국기" src="../player/upload/${name.plerImage.split(',')[1] }" class="${name.positionNum }flag"  style="width:45px;height: 42px;position:absolute; top: 90px;left: -13px;"></p>
 									<div class="card_Btn">
 										<button onclick="playerView('${name.plerName}')" class="${name.plerName}">선수정보</button>							
 										<button onclick="sel('${name.positionNum }')">방출</button>
@@ -176,7 +178,14 @@
 					</table>
 					</c:forEach>
 					</form>
-					${cnt }
+					<span style="color: white;">
+						총인원 ${cnt } <br>
+						
+						
+						<%-- 	${plForList.playerDTO.plerPrice} --%>
+							
+						
+					</span>
 				<div class="button_for_i">
 					<c:forEach var="i" begin="1" end="11">				
 						<input type="button" class="positionNum${i }" id="positionNum${i }" name="positionNum${i }" value="선수${i }" onclick="run(${i })"><br>
@@ -184,6 +193,7 @@
 				</div>		
 				</div>
 			</div>
+			
 		</div> 
 	</div>	
 
@@ -258,18 +268,17 @@ const selector9 = document.getElementById(document.querySelector('.positionNum9'
 const selector10 = document.getElementById(document.querySelector('.positionNum10').value);
 const selector11 = document.getElementById(document.querySelector('.positionNum11').value); 
 
-
 	bbb();
 	//데이터 있는 포지션 hidden 만들기
 	function bbb() {		
+
 		for(let i=1; i<12; i++) {
 			if(eval('selector'+i) != null){
 		    	eval('selector'+i).style.visibility='hidden';	 
-		    	
-			}
+			
 		}
 	}
-
+	}
 
 	//버튼생성 
 	function run(array) {
@@ -286,10 +295,9 @@ const selector11 = document.getElementById(document.querySelector('.positionNum1
 	
 	function sel(aaa){
 		
-		const returnCon = confirm("방출 하시겠습니까?");
-		
-		if(returnCon){
-			location.href = 'forDel?positionNum=' +aaa;
+		const del = confirm("방출 하시겠습니까?"); 
+		if(del){
+			location.href = 'forDel?positionNum='+ aaa;
 			
 		}
 	}

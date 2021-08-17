@@ -19,6 +19,8 @@ public class LoginService {
 	BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	public void login(LoginCommand loginCommand,Errors errors,HttpSession session,HttpServletResponse response) {
+		loginCommand.getUserPw();
+		loginCommand.getUserId();
 		String userId = loginCommand.getUserId();
 		AuthInfo authInfo = loginRepository.login(userId);
 		
@@ -33,7 +35,6 @@ public class LoginService {
 					cookie.setPath("/");
 					cookie.setMaxAge(60*60*24*30);
 					response.addCookie(cookie);
-					System.out.println(cookie);
 				}else {
 					Cookie cookie = new Cookie("idStore","");
 					cookie.setPath("/");

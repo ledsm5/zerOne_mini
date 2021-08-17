@@ -36,7 +36,7 @@
 </select>
 
 <select id="empNo" resultType="string">
-	select nvl(max(EMPLOYEE_NUM),0) + 1 from employees
+	select nvl(max(EMPLOYEE_NUM),10) + 1 from employees
 </select>
 
 </mapper>

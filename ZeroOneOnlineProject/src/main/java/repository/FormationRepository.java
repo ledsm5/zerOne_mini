@@ -9,7 +9,6 @@ import Model.FormationDTO;
 import Model.FormationPlayerDTO;
 import Model.PlayerDTO;
 import Model.SquadDTO;
-import Model.TeamFormationDTO;
 
 public class FormationRepository {
 	@Autowired
@@ -18,7 +17,10 @@ public class FormationRepository {
 	String namespace = "mappers.formationMapper";
 	String statement;
 
-	public List<TeamFormationDTO> forPlList(String memId) {
+	
+	
+	
+	public List<FormationPlayerDTO> forPlList(String memId) {
 		statement = namespace + ".forPlList";
 		return sqlSession.selectList(statement,memId);
 	}

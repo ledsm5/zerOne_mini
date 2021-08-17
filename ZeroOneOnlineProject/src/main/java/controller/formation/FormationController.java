@@ -53,6 +53,8 @@ public class FormationController {
 	@Autowired
 	FormaPlListService formaPlListService;
 	
+
+	
 	@RequestMapping("plerDetailView")
 	public String plerDetailView(@RequestParam(value="plerName")String plerName,Model model) {
 		playerDetailService.DetailPrint(plerName,model);
@@ -71,7 +73,7 @@ public class FormationController {
 	@RequestMapping("forDel")
 	public String formationDelete(@RequestParam(value="positionNum")String positionNum,HttpSession session) {
 		formationDelService.forDel(positionNum,session);
-		return "formation/formationHome";
+		return "redirect:formation";
 	}
 	
 	//ajax 로 포메이션 여러개 불러오기 
@@ -149,8 +151,8 @@ public class FormationController {
 	@RequestMapping("formation")
 	public String formation(FormationCommand formationCommand , HttpSession session,Model model) {
 		squadListService.squadList(session,model); 
+		formaPlListService.forPlList(session,model); 
 		formationListService.forList(session,model);
-		formaPlListService.forPlList(session,model);
 		return "formation/formationHome";
 	}
 	

@@ -18,7 +18,7 @@ public class FormationDelService {
 		String memId= authInfo.getUserId();
 		FormationDTO dto = new FormationDTO();
 		
-		
+	
 		dto.setMemId(memId);
 		dto.setPositionNum(positionNum);
 		formationRepository.forDel(dto);
