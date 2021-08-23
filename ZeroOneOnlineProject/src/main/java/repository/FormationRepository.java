@@ -20,9 +20,17 @@ public class FormationRepository {
 	
 	
 	
-	public List<FormationPlayerDTO> forPlList(String memId) {
-		statement = namespace + ".forPlList";
+	
+	
+	
+	public List<String> plNameSel(String memId) {
+		statement= namespace+ ".plNameSel";
 		return sqlSession.selectList(statement,memId);
+	}
+	
+	public FormationPlayerDTO forPlList(FormationDTO dto) {
+		statement = namespace + ".forPlList";
+		return sqlSession.selectOne(statement,dto);
 	}
 	
 	public PlayerDTO forPlDetail(String plerName) {

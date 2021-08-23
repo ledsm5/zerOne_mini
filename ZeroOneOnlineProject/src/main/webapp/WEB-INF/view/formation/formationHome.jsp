@@ -164,7 +164,7 @@
 									<p class="flag" style="z-index: 2;"><input type="image" alt="국기" src="../player/upload/${name.plerImage.split(',')[1] }" class="${name.positionNum }flag"  style="width:45px;height: 42px;position:absolute; top: 90px;left: -13px;"></p>
 									<div class="card_Btn">
 										<button onclick="playerView('${name.plerName}')" class="${name.plerName}">선수정보</button>							
-										<button onclick="sel('${name.positionNum }')">방출</button>
+										<button onclick="dropPl('${name.positionNum }')">방출</button>
 									</div>
 								</div>
 								<!-- 선수 상세 -->
@@ -182,10 +182,15 @@
 						총인원 ${cnt } <br>
 						
 						
-						<%-- 	${plForList.playerDTO.plerPrice} --%>
-							
+					<c:forEach items="${plForList}" var="eee"> 
+						<c:set value="${eee.playerDTO.plerPrice }" var="price"/>
+						<c:set value="${eee.playerDTO.plerSalary }" var="salary"/>
+					</c:forEach>
+						구단가치 :	${price }
+						총급여 : ${salary }	
 						
 					</span>
+					
 				<div class="button_for_i">
 					<c:forEach var="i" begin="1" end="11">				
 						<input type="button" class="positionNum${i }" id="positionNum${i }" name="positionNum${i }" value="선수${i }" onclick="run(${i })"><br>
@@ -293,13 +298,11 @@ const selector11 = document.getElementById(document.querySelector('.positionNum1
 	}
 	
 	
-	function sel(aaa){
-		
-		const del = confirm("방출 하시겠습니까?"); 
-		if(del){
-			location.href = 'forDel?positionNum='+ aaa;
-			
-		}
+	function dropPl(pN){
+		const rrr =confirm("방출 하시겠습니까?");
+		if(rrr == true){
+			location.href ='forDel?positionNum='+ pN;
+		} 
 	}
     
 	

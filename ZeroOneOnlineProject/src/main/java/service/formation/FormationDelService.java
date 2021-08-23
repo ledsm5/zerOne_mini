@@ -17,7 +17,6 @@ public class FormationDelService {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String memId= authInfo.getUserId();
 		FormationDTO dto = new FormationDTO();
-		
 	
 		dto.setMemId(memId);
 		dto.setPositionNum(positionNum);

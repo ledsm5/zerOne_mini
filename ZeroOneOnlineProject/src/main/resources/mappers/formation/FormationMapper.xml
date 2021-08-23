@@ -14,7 +14,15 @@
 </sql>
 
 
-<resultMap type="Model.FormationPlayerDTO" id="formationPlayerMap">
+
+<select id="plNameSel" parameterType="string" resultType="string">
+	select pler_name from formation 
+	where mem_id = #{memId}
+</select>
+
+<!-- association은 하나씩 밖에 못가져온다 !!!!! -->
+<!--  그렇기 때문에 service 에서 반복문을 돌려야한다 . -->
+<resultMap type="Model.FormationPlayerDTO" id="formationPlayerMap">  
 	<association property="formationDTO" javaType="Model.FormationDTO">
 		<id column="POSITION_NUM" jdbcType="VARCHAR" property="positionNum"/>
 		<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
@@ -23,12 +31,13 @@
 	<association property="playerDTO" javaType="Model.PlayerDTO">
 		<id column="PLER_NAME" jdbcType="VARCHAR" property="plerName"/>
 		<result column="PLER_PRICE" jdbcType="BIGINT" property="plerPrice"/>
+		<result column="PLER_SALARY" jdbcType="BIGINT" property="plerSalary"/>
 	</association>
 </resultMap>
 
 
-<select id="forPlList" parameterType="string" resultMap="formationPlayerMap">
-	select f.pler_name ,POSITION_NUM,pler_price ,mem_Id
+<select id="forPlList" parameterType="Model.FormationDTO" resultMap="formationPlayerMap">
+	select f.pler_name ,POSITION_NUM,pler_price,pler_salary ,mem_Id
 	from player p , formation f
 	where p.pler_name(+) = f.pler_name and mem_id = #{memId}
 </select>
