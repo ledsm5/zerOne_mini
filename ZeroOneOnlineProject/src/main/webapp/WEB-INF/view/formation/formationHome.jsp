@@ -79,9 +79,9 @@
 	
 	
 	/*카드버튼*/
-	.card_Btn{position:absolute; bottom:37px; left:40px; z-index:3;}
+	.card_Btn{position:absolute; bottom:37px; left:40px; z-index:4;}
 	
-	/*사진 */
+	/*버튼 */
 	.positionNum1 {position:absolute;bottom:550px;left:300px;}
 	.positionNum2 {position:absolute;bottom:550px;left:600px;}
 	.positionNum3 {position:absolute;bottom:550px;left:900px;}
@@ -94,17 +94,17 @@
 	.positionNum10 {position:absolute;bottom:-100px;left:1000px;}
 	.positionNum11 {position:absolute;bottom:-300px;left:650px;}
 	
-	/* 사진전체 */
+	/* 선수위치 */
 	#positionNum1Maker {position:absolute;bottom:500px;left:300px;}
 	#positionNum2Maker {position:absolute;bottom:500px;left:580px;}
 	#positionNum3Maker {position:absolute;bottom:500px;left:900px;}
-	#positionNum4Maker {position:absolute;bottom:50px;left:300px;}
-	#positionNum5Maker {position:absolute;bottom:50px;left:580px;}
-	#positionNum6Maker {position:absolute;bottom:50px;left:900px;}
-	#positionNum7Maker {position:absolute;bottom:-100px;left:200px;}
-	#positionNum8Maker {position:absolute;bottom:-100px;left:400px;}
-	#positionNum9Maker {position:absolute;bottom:-100px;left:600px;}
-	#positionNum10Maker {position:absolute;bottom:-100px;left:800px;}
+	#positionNum4Maker {position:absolute;bottom:150px;left:300px;}
+	#positionNum5Maker {position:absolute;bottom:150px;left:580px;}
+	#positionNum6Maker {position:absolute;bottom:150px;left:900px;}
+	#positionNum7Maker {position:absolute;bottom:-150px;left:100px;}
+	#positionNum8Maker {position:absolute;bottom:-150px;left:400px;}
+	#positionNum9Maker {position:absolute;bottom:-150px;left:700px;}
+	#positionNum10Maker {position:absolute;bottom:-150px;left:1000px;}
 	#positionNum11Maker {position:absolute;bottom:-200px;left:500px;}
 	
 	/* 국기 */
@@ -118,9 +118,6 @@
 		background-color: black;
 	}
 </style>
-<script type="text/javascript">
-	
-</script>
 </head>
 <body>
 	<div id="wrap">
@@ -148,7 +145,7 @@
 			<div id="notice_content">
 				<div id="team_fm">
 					<div id="forma_top">
-						포메이션 &nbsp;&nbsp;&nbsp;&nbsp;구단가치 총급여  
+						<span style="color:white;">${authInfo.userId } 님의 포메이션 </span>
 					</div>
 				<div class="buttonSelector">			
 					<form action="#" >
@@ -161,7 +158,7 @@
 										<img src="../images/21TOTN.png">												
 									</div>
 									<p><input type="image" alt="왜없내" src="../player/upload/${name.plerImage.split(',')[0] }" class="${name.positionNum }img" ></p>
-									<p class="flag" style="z-index: 2;"><input type="image" alt="국기" src="../player/upload/${name.plerImage.split(',')[1] }" class="${name.positionNum }flag"  style="width:45px;height: 42px;position:absolute; top: 90px;left: -13px;"></p>
+									<p class="flag" style="z-index: 3;"><input type="image" alt="국기" src="../player/upload/${name.plerImage.split(',')[1] }" class="${name.positionNum }flag"  style="width:50px;height: 50px;position:absolute; top: 88px;left: -15px;"></p>
 									<div class="card_Btn">
 										<button onclick="playerView('${name.plerName}')" class="${name.plerName}">선수정보</button>							
 										<button onclick="dropPl('${name.positionNum }')">방출</button>
@@ -181,14 +178,15 @@
 					<span style="color: white;">
 						총인원 ${cnt } <br>
 						
-						
-					<c:forEach items="${plForList}" var="eee"> 
-						<c:set value="${eee.playerDTO.plerPrice }" var="price"/>
-						<c:set value="${eee.playerDTO.plerSalary }" var="salary"/>
+					<c:set var="price" value="0"/>	
+					<c:set var="salary" value="0"/>	
+					<c:forEach items="${plForList}" var="eee"> 					
+						<c:set value="${eee.playerDTO.plerPrice + price}" var="price"/>
+						<c:set value="${eee.playerDTO.plerSalary + salary}" var="salary"/>
 					</c:forEach>
-						구단가치 :	${price }
-						총급여 : ${salary }	
-						
+						구단가치 : <fmt:formatNumber value="${price }" pattern="\#,###.## BP"/> <br>
+						총급여 : ${salary }   	
+
 					</span>
 					
 				<div class="button_for_i">
@@ -298,55 +296,10 @@ const selector11 = document.getElementById(document.querySelector('.positionNum1
 	}
 	
 	
-	function dropPl(pN){
-		const rrr =confirm("방출 하시겠습니까?");
-		if(rrr == true){
-			location.href ='forDel?positionNum='+ pN;
-		} 
+ 	function dropPl(pN){
+		location.href ='forDel?positionNum='+ pN;
 	}
-    
-	
-	
-	 
-	
-	/* 팝업
-		function pop() {
-	    	window.open("https://blog.naver.com/hyoyeol/70184157539","naver","width =600, height = 600")
-	    } 
-	*/
-
-
-        
-        
-        
-/* document.getElementById('btn1').style.visibility='hidden'; */        
-/*
-function erchk() {
-        if (document.getElementById("but").value == "") {
-            alert("내용을 입력해주세요");
-            return false;
-  }else
-   document.frmButton.submit();
-        const numSelect = document.querySelector(".buttonSelector")
-        const checkBoxTd = document.querySelector(".checkBoxTd");
-        const chbox = document.querySelector(".chbox");
-
-
-
-function regist() {
-    numSelect.addEventListener('click', e => {
-    	const chb = document.createElement("input");
-        chb.type="checkbox";
-        checkBoxTd.appendChild(chb);
-        chb.className = 'chbox';
-        chb.name='chbox';
-        chb.value='Y';
-       
-    });
-} 
- */
- 
-</script>
-
+     
+</script>	
 </body>
 </html>

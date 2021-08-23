@@ -75,7 +75,7 @@ public class PlayerController {
 				return "player/plRegistForm";
 			}
 		playerRegistService.registService(playerCommand,session);
-		return "redirect:/";
+		return "player/playerHome";
 	}
 	
 	@RequestMapping("plRegist")

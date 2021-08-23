@@ -21,10 +21,10 @@ public class FormaPlListService {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo"); 
 		String memId = authInfo.getUserId();
 		
-		List<FormationPlayerDTO> list =  new ArrayList<FormationPlayerDTO>();
 		
-		List<String> plerNames=formationRepository.plNameSel(memId);
-		for( String plerName :plerNames) {
+		List<String> plerNames = formationRepository.plNameSel(memId);
+		List<FormationPlayerDTO> list =  new ArrayList<FormationPlayerDTO>();
+		for(String plerName :plerNames) {
 			FormationDTO dto = new FormationDTO();
 			dto.setMemId(memId);
 			dto.setPlerName(plerName);

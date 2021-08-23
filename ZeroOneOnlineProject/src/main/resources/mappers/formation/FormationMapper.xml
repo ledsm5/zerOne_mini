@@ -39,7 +39,7 @@
 <select id="forPlList" parameterType="Model.FormationDTO" resultMap="formationPlayerMap">
 	select f.pler_name ,POSITION_NUM,pler_price,pler_salary ,mem_Id
 	from player p , formation f
-	where p.pler_name(+) = f.pler_name and mem_id = #{memId}
+	where p.pler_name(+) = f.pler_name and mem_id = #{memId} and p.pler_name = #{plerName}
 </select>
 
 <select id="forPlDetail" parameterType="string" resultType="Model.PlayerDTO">
@@ -89,7 +89,6 @@
 	insert into formation
 		(mem_id, pler_name, POSITION_NUM,pler_image)
 	values(#{memId},#{plerName},#{positionNum},
-	
 	((select pler_image from player where pler_name = #{plerName} ))
 	)
 </insert>
@@ -97,7 +96,6 @@
 
 
 <select id="squadDetail" parameterType="string" resultType="Model.SquadDTO">
-	
 	select <include refid="BaseSquad"></include> from squad
 	where pler_name = #{plerName}
 </select>

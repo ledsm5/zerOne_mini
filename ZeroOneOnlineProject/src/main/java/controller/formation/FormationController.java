@@ -72,8 +72,9 @@ public class FormationController {
 	
 	@RequestMapping("forDel")
 	public String formationDelete(@RequestParam(value="positionNum")String positionNum,HttpSession session) {
-		formationDelService.forDel(positionNum,session);
-		return "redirect:formation";
+		//formationDelService.forDel(positionNum,session);
+		
+		return "main/main";
 	}
 	
 	//ajax 로 포메이션 여러개 불러오기 
